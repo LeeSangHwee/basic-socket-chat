@@ -16,8 +16,12 @@ export default function MessagesPane({
     messages,
     sender,
     onSendButtonClick,
+    onLeaveClick,
+                                         onJoinClick,
                                      }: MessagesPaneProps['chat'] & {
     onSendButtonClick: (message: string) => void;
+    onJoinClick: () => void;
+    onLeaveClick: () => void;
 }) {
   const [chatMessages, setChatMessages] = React.useState(messages);
   const [textAreaValue, setTextAreaValue] = React.useState('');
@@ -35,7 +39,7 @@ export default function MessagesPane({
         backgroundColor: 'background.level1',
       }}
     >
-      <MessagesPaneHeader sender={sender} />
+      <MessagesPaneHeader sender={sender} onJoinClick={onJoinClick} onLeaveClick={onLeaveClick}/>
       <Box
         sx={{
           display: 'flex',
